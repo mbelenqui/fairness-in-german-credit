@@ -1,88 +1,72 @@
-# TP-Integrador-Equidad-en-Aprendizaje-Automatico
+# Equidad en el aprendizaje automático
 
-## Enunciado
 
-Este trabajo práctico grupal tiene como objetivo poner en práctica los conceptos vistos en la clase. La idea será trabajar sobre el conjunto de datos “German Credit Data”, que cuenta con información acerca de datos bancarios de personas y en base a eso crear un modelo que prediga si a una persona debe aprobarsele o no un préstamo bancario.
+## Descripción
+Proyecto académico realizado en grupo con el objetivo de analizar el desempeño de un modelo de aprendizaje automático aplicado a un problema de aprobación de créditos bancarios, con especial foco en evaluar su equidad respecto de una variable sensible, utilizando el conjunto de datos **German Credit**.
+Este repositorio corresponde a un **fork del trabajo original**, reorganizado, resumido y documentado para registro personal.
 
-La idea es generar un clasificador inicial, evaluarlo de manera agregada y también haciendo un analisis de equidad con especial foco en la asignación de creditos a personas de distintos géneros. Luego, se exploraran técnicas de mitigación de sesgos y se crearan nuevos modelos, los cuales se evaluarán y compararán con el modelo inicial.
 
-## Pasos
+## Objetivos
+- Generar modelos de clasificación para un problema de asignación de créditos en relación al "riesgo crediticio"
+- Evaluar el desempeño mediante métricas tradicionales y seleccionar uno a modo de baseline
+- Analizar el comportamiento del modelo respecto de distintos grupos
+- Evaluar métricas de equidad
+- Comparar y aplicar técnicas de mitigación de sesgos 
 
-### 1) Conjunto de datos
 
-✅ Obtener el conjunto de datos desde el repositorio UCI [Dataset](https://archive.ics.uci.edu/dataset/144/statlog+german+credit+data)
+## Herramientas
+- Python
+- Jupyter Notebook
+- pandas
+- numpy
+- scikit-learn
+- matplotlib
+- seaborn
+- holisticai
 
-✅ Buscar información en fuentes confiables y contestar las preguntas propuestas en el trabajo *Datasheets for Datasets* para conocer mejor el conjunto de datos:
 
-  - ✅ **Motivación:**  
-    ¿Con qué propósito se creó el conjunto de datos? ¿Era para una tarea específica? ¿Había una brecha específica que necesitaba ser cubierta? Proporcionar una descripción.  
-    ¿Quién creó el conjunto de datos (equipo, grupo de investigación) y en nombre de qué entidad?
+## Composición
+1. **Análisis exploratorio de datos (EDA)**
+   - Exploración de variables 
+   - Análisis del target y las variables sensibles
+2. **Modelo base**
+   - Entrenamiento de dos modelos de clasificación 
+   - Evaluación con métricas tradicionales
+   - Eleccion de un modelo como baseline
+3. **Evaluación de equidad**
+   - Análisis de métricas de equidad para distintos grupos
+4. **Mitigación**
+   - Aplicación de técnicas para reducir las desigualdades observadas
+5. **Análisis de resultados**
+   - Comparación de resultados para distintas tecnicas de mitigación 
 
-  - ✅ **Composición:**  
-    ¿Qué representan las instancias del conjunto de datos? ¿Hay varios tipos de instancias? Proporcionar una descripción.
 
-  - ✅ **Proceso de recopilación:**  
-    ¿Cómo se adquirieron los datos? ¿Fueron observados directamente, informados por sujetos o derivados? ¿Fueron validados o verificados?
+## Resultados principales
+- Los datos se encontraron desbalanceados y con situaciones candidatas a generar sesgos
+- El modelo que mejor se desempeño fue un regresor logístico
+- El análisis de métricas de equidad permitió identificar posibles desigualdades 
+- La mitigación aplicada mejoró la equidad del modelo
 
-  - ✅ **Preprocesamiento/limpieza/etiquetado:**  
-    ¿Se realizó algún preprocesamiento o limpieza? Proporcionar detalles o indicar si no aplica.
+## Contenido del repositorio
+- `fairness-in-german-credit.ipynb`: notebook principal 
+- `README.md`: descripción del proyecto
+- `requirements.txt`: dependencias necesarias para ejecutar el análisis
 
-  - ✅ **Usos:**  
-    ¿Se ha utilizado el conjunto de datos para alguna tarea? ¿Existe un repositorio o sistema que lo utilice? Proporcionar enlaces si existen.
 
-✅ Realizar un análisis exploratorio del conjunto de datos, Por ejemplo, explorar distribución de etiquetas, edades, géneros, etc.  
-✅ Identificar posibles sesgos (por ejemplo, representación de género en préstamos aprobados).
+## ¿Cómo ejecutar el proyecto?
+1. Clonar el repositorio:
+   ```bash
+   git clone https://github.com/mbelenqui/fairness-in-german-credit.git
+   ```
+2. Instalar dependencias
+   ```bash
+   pip install -r requirements.txt
+   ```
+3. Abrir el notebook
+   ```bash
+   jupyter notebook fairness-in-german-credit.ipynb
+   ```
 
----
+## Conclusión
 
-### 2) Creación de un modelo inicial
-
-✅ Elegir un modelo clásico de clasificación (ejemplo: Random Forest o Regresión Logística).
-
-✅ Entrenar y evaluar el modelo usando métricas clásicas: precisión, recall, accuracy, f1-score.
-
-✅ Crear la matriz de confusión.
-
-✅ Interpretar los resultados obtenidos.
-
-✅ Justificar cuál error es más grave para el banco (maximizar personas que paguen el préstamo).
-
----
-
-### 3) Evaluación de equidad del modelo inicial
-
-✅ Describir cómo se interpretan en este contexto los criterios de fairness vistos en clase:  
-  - Statistical Parity  
-  - Equalized Odds  
-  - Equal Opportunity  
-  - Predictive Parity
-
-✅ Analizar si el modelo inicial es fair para cada definición, usando la medida de disparidad y un umbral definido.
-
-✅ Justificar cuál criterio de fairness es más relevante para el banco.
-
----
-
-### 4) Mitigación de sesgos
-
-✅ Seleccionar al menos 2 técnicas de mitigación de sesgos vistas en clase.
-
-✅ Entrenar el modelo ajustado con dichas técnicas.
-
-✅ Evaluar la performance del modelo ajustado con las métricas clásicas y matriz de confusión.
-
-✅ Evaluar la equidad del modelo ajustado usando las mismas métricas y criterios del paso 3.
-
----
-
-### 5) Conclusiones
-
-✅ Comparar resultados entre el modelo original y el ajustado.
-
-✅ Discutir mejoras en fairness y métricas de performance.
-
-✅ Reflexionar sobre el impacto de estos cambios en aplicaciones reales y la importancia de la equidad en machine learning.
-
----
-
-## Referencias
+Este proyecto me permitió comprender la importancia de evaluar criterios de equidad en modelos de aprendizaje automático y analizar el impacto del uso de modelos de clasificación sesgados en contextos reales de toma de decisiones, donde las consecuencias también son reales.
